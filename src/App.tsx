@@ -3,13 +3,16 @@ import './globals.css'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { RouterProvider } from 'react-router-dom'
 
+import { ThemeProvider } from './components/theme/theme-provider'
 import { router } from './routes'
 
 export function App() {
   return (
     <HelmetProvider>
-      <Helmet titleTemplate="%s | Fastfeet" />
-      <RouterProvider router={router} />
+      <ThemeProvider storageKey="fastfeet-theme" defaultTheme="dark">
+        <Helmet titleTemplate="%s | Fastfeet" />
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </HelmetProvider>
   )
 }
