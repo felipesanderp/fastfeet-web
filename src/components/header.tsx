@@ -14,8 +14,8 @@ export function Header() {
     <div className="flex items-center justify-between h-16 px-6 bg-white border-b border-zinc-400">
       <Breadcrumb breadcrumbs={breadcrumbs} />
       <div className="flex items-center gap-2">
-        <ThemeToggle />
         <AccountMenu />
+        <ThemeToggle />
       </div>
     </div>
   )
