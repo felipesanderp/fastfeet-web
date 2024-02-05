@@ -1,4 +1,6 @@
+import { AccountMenu } from './account-menu'
 import { Breadcrumb } from './breadcrumb'
+import { ThemeToggle } from './theme/theme-toggle'
 
 export function Header() {
   const breadcrumbs = {
@@ -9,9 +11,11 @@ export function Header() {
   }
 
   return (
-    <div className="flex h-16 bg-white border-b border-zinc-400">
-      <div>
-        <Breadcrumb breadcrumbs={breadcrumbs} />
+    <div className="flex items-center justify-between h-16 px-6 bg-white border-b border-zinc-400">
+      <Breadcrumb breadcrumbs={breadcrumbs} />
+      <div className="flex items-center gap-2">
+        <ThemeToggle />
+        <AccountMenu />
       </div>
     </div>
   )

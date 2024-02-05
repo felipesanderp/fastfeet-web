@@ -1,3 +1,4 @@
+import { Home } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 
 interface Breadcrumbs {
@@ -16,7 +17,8 @@ export const Breadcrumb = ({ breadcrumbs }: BreadcrumbProps) => {
   return (
     <div className="">
       <div className="flex">
-        <Link to="/" className="mr-1">
+        <Link to="/" className="mr-1 flex items-center gap-2">
+          <Home className="size-4" />
           Home
         </Link>
         {!isHome && <span className="mx-1">{'>'}</span>}
@@ -27,12 +29,18 @@ export const Breadcrumb = ({ breadcrumbs }: BreadcrumbProps) => {
           return (
             <span key={name}>
               {index > 0 && <span className="mx-1">{'>'}</span>}
-              <Link
-                to={routeTo}
-                className={isLast ? 'font-bold' : 'text-blue-200'}
-              >
-                {customName || name}
-              </Link>
+              {index >= 1 ? (
+                <Link
+                  to={routeTo}
+                  className={isLast ? 'font-bold' : 'text-blue-200'}
+                >
+                  {customName || name}
+                </Link>
+              ) : (
+                <span className={isLast ? 'font-bold' : 'text-blue-200'}>
+                  {customName || name}
+                </span>
+              )}
             </span>
           )
         })}
