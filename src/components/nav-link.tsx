@@ -1,15 +1,33 @@
+import * as React from 'react'
 import { Link, LinkProps, useLocation } from 'react-router-dom'
 
-export type NavLinkProps = LinkProps
+import { cn } from '@/lib/utils'
 
-export function NavLink(props: NavLinkProps) {
-  const { pathname } = useLocation()
-
-  return (
-    <Link
-      data-current={pathname === props.to}
-      className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground data-[current=true]:text-foreground"
-      {...props}
-    />
-  )
+export interface NavLinkProps extends LinkProps {
+  title: string
 }
+
+const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(
+  ({ title, className, children, ...props }, ref) => {
+    const { pathname } = useLocation()
+    return (
+      <Link
+        data-current={pathname === props.to}
+        className={cn(
+          'group flex items-center h-10 gap-3 rounded px-3 py-2 hover:bg-accent data-[current=true]:bg-primary data-[current=true]:text-primary-foreground',
+          className,
+        )}
+        ref={ref}
+        {...props}
+      >
+        {children}
+        <span className="font-medium data-[current=true]:text-primary">
+          {title}
+        </span>
+      </Link>
+    )
+  },
+)
+NavLink.displayName = 'NavLink'
+
+export { NavLink }
