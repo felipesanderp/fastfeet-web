@@ -9,7 +9,7 @@ import { router } from './routes'
 export function App() {
   return (
     <HelmetProvider>
-      <ThemeProvider storageKey="fastfeet-theme" defaultTheme="dark">
+      <ThemeProvider storageKey="fastfeet-theme" defaultTheme="light">
         <Helmet titleTemplate="%s | Fastfeet" />
         <RouterProvider router={router} />
       </ThemeProvider>
