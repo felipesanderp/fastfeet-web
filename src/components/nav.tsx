@@ -34,7 +34,7 @@ export function Nav() {
             )}
           </Button>
         </Collapsible.Trigger>
-        <Collapsible.Content className="px-5 space-y-0.5">
+        <Collapsible.Content className="px-7 space-y-0.5">
           <NavLink to="/users/admins" title="Admins"></NavLink>
           <NavLink to="/users/deliverymen" title="Entregadores"></NavLink>
           <NavLink to="/users/recipients" title="Destinatários"></NavLink>

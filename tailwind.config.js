@@ -17,6 +17,11 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        inter: 'Inter',
+        roboto: 'Roboto',
+        robotoCondensed: 'Roboto Condensed',
+      },
       gridTemplateColumns: {
         app: 'minmax(16.4rem, 18.4rem) 1fr',
       },
