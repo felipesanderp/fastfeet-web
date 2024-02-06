@@ -11,7 +11,7 @@ export function Header() {
   }
 
   return (
-    <div className="hidden lg:flex items-center justify-between h-16 px-6 bg-white border-b border-zinc-400">
+    <div className="hidden lg:flex items-center justify-between h-16 px-6 bg-muted border-b border-zinc-400">
       <Breadcrumb breadcrumbs={breadcrumbs} />
       <div className="flex items-center gap-2">
         <UserAccountNav
