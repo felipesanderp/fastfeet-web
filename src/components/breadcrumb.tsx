@@ -18,8 +18,9 @@ export const Breadcrumb = ({ breadcrumbs }: BreadcrumbProps) => {
     <div className="">
       <div className="flex">
         <Link
+          data-current={location.pathname === '/'}
           to="/"
-          className="mr-1 flex items-center gap-2 text-muted-foreground"
+          className="mr-1 flex items-center gap-2 text-muted-foreground data-[current=true]:text-violet-500 data-[current=true]:font-semibold"
         >
           <Home className="size-4" />
           Home
@@ -35,7 +36,11 @@ export const Breadcrumb = ({ breadcrumbs }: BreadcrumbProps) => {
               {index >= 1 ? (
                 <Link
                   to={routeTo}
-                  className={isLast ? 'font-bold' : 'text-muted-foreground'}
+                  className={
+                    isLast
+                      ? 'text-violet-500 font-semibold'
+                      : 'text-muted-foreground'
+                  }
                 >
                   {customName || name}
                 </Link>
