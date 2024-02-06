@@ -4,6 +4,7 @@ import { AppLayout } from './pages/_layouts/app'
 import { AuthLayout } from './pages/_layouts/auth'
 import { NotFound } from './pages/404'
 import { Dashboard } from './pages/app/dashboard/dashboard'
+import { Orders } from './pages/app/orders/orders'
 import { UsersAdmin } from './pages/app/users/admin'
 import { UsersDeliverymen } from './pages/app/users/deliverymen'
 import { SignIn } from './pages/auth/sign-in'
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: '/users/deliverymen',
         element: <UsersDeliverymen />,
+      },
+      {
+        path: '/orders',
+        element: <Orders />,
       },
     ],
   },

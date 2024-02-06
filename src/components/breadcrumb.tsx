@@ -30,27 +30,19 @@ export const Breadcrumb = ({ breadcrumbs }: BreadcrumbProps) => {
           const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`
           const customName = breadcrumbs[routeTo]
           const isLast = index === pathnames.length - 1
+          console.log(isLast)
           return (
             <span key={name}>
               {index > 0 && <span className="mx-1">{'>'}</span>}
-              {index >= 1 ? (
-                <Link
-                  to={routeTo}
-                  className={
-                    isLast
-                      ? 'text-violet-500 font-semibold'
-                      : 'text-muted-foreground'
-                  }
-                >
-                  {customName || name}
-                </Link>
-              ) : (
-                <span
-                  className={isLast ? 'font-bold' : 'text-muted-foreground'}
-                >
-                  {customName || name}
-                </span>
-              )}
+              <span
+                className={
+                  isLast
+                    ? 'text-violet-500 font-semibold'
+                    : 'text-muted-foreground'
+                }
+              >
+                {customName || name}
+              </span>
             </span>
           )
         })}

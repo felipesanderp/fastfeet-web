@@ -8,6 +8,7 @@ export function Header() {
     '/users': 'Usuários',
     '/users/admins': 'Admins',
     '/users/deliverymen': 'Entregadores',
+    '/orders': 'Pedidos',
   }
 
   return (
