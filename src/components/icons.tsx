@@ -5,6 +5,7 @@ import {
   LockKeyholeIcon,
   type LucideIcon,
   Package,
+  PackageOpen,
   User,
 } from 'lucide-react'
 
@@ -17,4 +18,5 @@ export const Icons = {
   chevronRight: ChevronRight,
   chevronDown: ChevronDown,
   package: Package,
+  packageOpen: PackageOpen,
 }

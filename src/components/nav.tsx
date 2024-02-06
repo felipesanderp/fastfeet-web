@@ -21,7 +21,7 @@ export function Nav() {
         <Collapsible.Trigger asChild>
           <Button
             variant="ghost"
-            className="justify-between w-full px-2 py-2 text-md"
+            className="justify-between w-full px-3 py-1 text-md hover:bg-violet-100"
           >
             <div className="flex items-center gap-3">
               <Icons.user className="size-4" />
@@ -40,6 +40,10 @@ export function Nav() {
           <NavLink to="/users/recipients" title="Destinatários"></NavLink>
         </Collapsible.Content>
       </Collapsible.Root>
+
+      <NavLink to="/orders" title="Pedidos">
+        <Icons.package className="size-4" />
+      </NavLink>
     </nav>
   )
 }

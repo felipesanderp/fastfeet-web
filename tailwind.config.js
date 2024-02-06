@@ -18,7 +18,7 @@ module.exports = {
     },
     extend: {
       gridTemplateColumns: {
-        app: 'minmax(18rem, 20rem) 1fr',
+        app: 'minmax(16.4rem, 18.4rem) 1fr',
       },
       colors: {
         border: 'hsl(var(--border))',
