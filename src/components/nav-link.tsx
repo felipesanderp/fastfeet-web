@@ -14,14 +14,17 @@ const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(
       <Link
         data-current={pathname === props.to}
         className={cn(
-          'group flex items-center h-10 gap-3 rounded px-2 py-2 hover:bg-accent data-[current=true]:bg-primary data-[current=true]:text-primary-foreground',
+          'group flex items-center h-10 gap-3 rounded px-3 py-1 hover:bg-violet-100 data-[current=true]:bg-violet-100',
           className,
         )}
         ref={ref}
         {...props}
       >
         {children}
-        <span className="font-medium data-[current=true]:text-primary">
+        <span
+          data-current={pathname === props.to}
+          className="font-medium data-[current=true]:text-primary"
+        >
           {title}
         </span>
       </Link>
