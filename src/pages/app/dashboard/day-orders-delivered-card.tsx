@@ -12,7 +12,7 @@ export function DayOrdersDeliveredCard() {
       </CardHeader>
       <CardContent className="space-y-1">
         <>
-          <span className="text-2xl font-bold tracking-tight">22</span>
+          <span className="text-2xl font-bold tracking-tight">4</span>
           <p className="text-xs text-muted-foreground">
             <span className="text-emerald-500 dark:text-emerald-400">+5%</span>{' '}
             em relação a ontem
