@@ -1,4 +1,5 @@
 import { Map, Marker, ZoomControl } from 'pigeon-maps'
+import { maptiler } from 'pigeon-maps/providers'
 import { useState } from 'react'
 
 import { Dialog, DialogContent, DialogHeader } from '@/components/ui/dialog'
@@ -17,6 +18,8 @@ export function PendingOrdersMap({ orders }: MapProps) {
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
   const [open, setOpen] = useState(false)
 
+  const maptilerProvider = maptiler('esHUeOmxJcVLUhhlheLe', 'streets')
+
   function handleSelectOrder(order: Order) {
     setSelectedOrder(order)
     setOpen(true)
@@ -25,6 +28,7 @@ export function PendingOrdersMap({ orders }: MapProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <Map
+        provider={maptilerProvider}
         defaultCenter={[-25.4124493, -49.2298433]}
         defaultZoom={11}
         height={500}
