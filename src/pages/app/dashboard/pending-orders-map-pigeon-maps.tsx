@@ -1,6 +1,8 @@
 import { Map, Marker, ZoomControl } from 'pigeon-maps'
 import { useState } from 'react'
 
+import { Dialog, DialogContent, DialogHeader } from '@/components/ui/dialog'
+
 interface Order {
   id: number
   latitude: number
@@ -13,9 +15,15 @@ interface MapProps {
 
 export function PendingOrdersMap({ orders }: MapProps) {
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
+  const [open, setOpen] = useState(false)
+
+  function handleSelectOrder(order: Order) {
+    setSelectedOrder(order)
+    setOpen(true)
+  }
 
   return (
-    <div className="map-container">
+    <Dialog open={open} onOpenChange={setOpen}>
       <Map
         defaultCenter={[-25.4124493, -49.2298433]}
         defaultZoom={11}
@@ -25,7 +33,7 @@ export function PendingOrdersMap({ orders }: MapProps) {
           <Marker
             key={order.id}
             anchor={[order.latitude, order.longitude]}
-            onClick={() => setSelectedOrder(order)}
+            onClick={() => handleSelectOrder(order)}
             width={38}
             height={38}
           />
@@ -33,13 +41,13 @@ export function PendingOrdersMap({ orders }: MapProps) {
         <ZoomControl />
       </Map>
       {selectedOrder && (
-        <div className="order-info">
-          <h2>Order Info</h2>
-          <p>Order ID: {selectedOrder.id}</p>
-          <p>Latitude: {selectedOrder.latitude}</p>
-          <p>Longitude: {selectedOrder.longitude}</p>
-        </div>
+        <DialogContent>
+          <DialogHeader>Informações do pedido</DialogHeader>
+          <div>
+            <p>Order ID: {selectedOrder.id}</p>
+          </div>
+        </DialogContent>
       )}
-    </div>
+    </Dialog>
   )
 }
