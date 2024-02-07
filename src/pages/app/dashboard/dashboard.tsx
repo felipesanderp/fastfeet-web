@@ -1,3 +1,20 @@
+import { Helmet } from 'react-helmet-async'
+
+import { DayOrdersDeliveredCard } from './day-orders-delivered-card'
+
 export function Dashboard() {
-  return <h1>Dashboard</h1>
+  return (
+    <>
+      <Helmet title="Dashboard" />
+      <div className="flex flex-col gap-4">
+        <h1 className="text-3xl font-bold tracking-tight font-robotoCondensed">
+          Dashboard
+        </h1>
+
+        <div className="grid grid-cols-4 gap-4">
+          <DayOrdersDeliveredCard />
+        </div>
+      </div>
+    </>
+  )
 }
