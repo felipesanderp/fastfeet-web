@@ -7,6 +7,7 @@ import { Dashboard } from './pages/app/dashboard/dashboard'
 import { Orders } from './pages/app/orders/orders'
 import { UsersAdmin } from './pages/app/users/admin'
 import { UsersDeliverymen } from './pages/app/users/deliverymen'
+import { UsersRecipients } from './pages/app/users/recipients'
 import { SignIn } from './pages/auth/sign-in'
 import { Error } from './pages/error'
 
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: '/users/deliverymen',
         element: <UsersDeliverymen />,
+      },
+      {
+        path: '/users/recipients',
+        element: <UsersRecipients />,
       },
       {
         path: '/orders',
