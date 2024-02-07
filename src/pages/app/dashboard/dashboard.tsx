@@ -4,7 +4,7 @@ import { DayOrdersDeliveredCard } from './day-orders-delivered-card'
 import { MonthOrdersDeliveredCard } from './month-orders-delivered-card'
 import { MonthReturnedOrdersCard } from './month-returned-orders-card'
 import { PendingOrdersCard } from './pending-orders-card'
-import { PendingOrdersMap } from './pending-orders-map-react-leaflet'
+import { PendingOrdersMap } from './pending-orders-map-google-maps'
 
 const orders = [
   {
