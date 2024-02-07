@@ -4,6 +4,21 @@ import { DayOrdersDeliveredCard } from './day-orders-delivered-card'
 import { MonthOrdersDeliveredCard } from './month-orders-delivered-card'
 import { MonthReturnedOrdersCard } from './month-returned-orders-card'
 import { PendingOrdersCard } from './pending-orders-card'
+import { PendingOrdersMap } from './pending-orders-map-pigeon-maps'
+
+const orders = [
+  {
+    id: 1,
+    latitude: -25.4129,
+    longitude: -49.2305,
+  },
+  {
+    id: 2,
+    latitude: -25.453389288968776,
+    longitude: -49.28089341433161,
+  },
+  // Add more orders as needed
+]
 
 export function Dashboard() {
   return (
@@ -19,6 +34,10 @@ export function Dashboard() {
           <MonthOrdersDeliveredCard />
           <PendingOrdersCard />
           <MonthReturnedOrdersCard />
+        </div>
+
+        <div className="">
+          <PendingOrdersMap orders={orders} />
         </div>
       </div>
     </>
