@@ -1,10 +1,12 @@
 import { Helmet } from 'react-helmet-async'
 
+import { Separator } from '@/components/ui/separator'
+
 import { DayOrdersDeliveredCard } from './day-orders-delivered-card'
 import { MonthOrdersDeliveredCard } from './month-orders-delivered-card'
 import { MonthReturnedOrdersCard } from './month-returned-orders-card'
 import { PendingOrdersCard } from './pending-orders-card'
-import { PendingOrdersMap } from './pending-orders-map-google-maps'
+import { PendingOrdersMap } from './pending-orders-map-pigeon-maps'
 
 const orders = [
   {
@@ -36,7 +38,11 @@ export function Dashboard() {
           <MonthReturnedOrdersCard />
         </div>
 
-        <div className="">
+        <div className="flex flex-col gap-4">
+          <Separator className="mt-4" />
+          <h2 className="text-lg font-semibold tracking-tight">
+            Pedidos pendentes
+          </h2>
           <PendingOrdersMap orders={orders} />
         </div>
       </div>

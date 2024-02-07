@@ -26,6 +26,8 @@ export function PendingOrdersMap({ orders }: MapProps) {
             key={order.id}
             anchor={[order.latitude, order.longitude]}
             onClick={() => setSelectedOrder(order)}
+            width={38}
+            height={38}
           />
         ))}
         <ZoomControl />
