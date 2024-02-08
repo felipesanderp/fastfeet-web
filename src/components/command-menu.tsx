@@ -48,7 +48,7 @@ export function CommandMenu() {
       <PopoverTrigger asChild>
         <Button
           variant="outline"
-          className="relative w-60 justify-start h-8 rounded-[0.5rem]"
+          className="relative w-60 justify-start h-8 rounded-[0.5rem] bg-transparent"
           onClick={() => setOpen(true)}
         >
           <span className="hidden lg:inline-flex">Search...</span>
