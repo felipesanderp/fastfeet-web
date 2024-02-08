@@ -4,7 +4,6 @@ import { Menu } from 'lucide-react'
 import { Logo } from './logo'
 import { Nav } from './nav'
 import { Button } from './ui/button'
-import { Input } from './ui/input'
 
 export function Sidebar() {
   return (
@@ -22,8 +21,6 @@ export function Sidebar() {
         forceMount
         className="flex flex-1 flex-col gap-6 data-[state=closed]:hidden lg:data-[state=closed]:flex"
       >
-        <Input />
-
         <Nav />
       </Collapsible.Content>
     </Collapsible.Root>
