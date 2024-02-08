@@ -78,7 +78,7 @@ export function CommandMenu() {
               <CommandItem
                 value="users/admins"
                 onSelect={() => {
-                  runCommand(() => navigate('/user/admins'))
+                  runCommand(() => navigate('/users/admins'))
                 }}
               >
                 <Icons.user className="mr-2 size-4" />
