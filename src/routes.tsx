@@ -7,7 +7,7 @@ import { Dashboard } from './pages/app/dashboard/dashboard'
 import { Orders } from './pages/app/orders/orders'
 import { UsersAdmin } from './pages/app/users/admin/admin'
 import { UsersDeliverymen } from './pages/app/users/deliverymen/deliverymen'
-import { UsersRecipients } from './pages/app/users/recipients'
+import { UsersRecipients } from './pages/app/users/recipients/recipients'
 import { SignIn } from './pages/auth/sign-in'
 import { Error } from './pages/error'
 
