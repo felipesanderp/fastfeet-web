@@ -16,6 +16,7 @@ import {
 
 import { DeliverymenTableFilters } from './deliverymen-table-filters'
 import { DeliverymenTableRow } from './deliverymen-table-row'
+import { DeliverymenTableSkeleton } from './deliverymen-table-skeleton'
 
 export function UsersDeliverymen() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -75,6 +76,7 @@ export function UsersDeliverymen() {
               </TableBody>
             </Table>
           </div>
+          {isLoadingDeliverymen && <DeliverymenTableSkeleton />}
         </div>
       </div>
     </>
