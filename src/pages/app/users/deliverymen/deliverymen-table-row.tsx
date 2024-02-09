@@ -26,7 +26,7 @@ export function DeliverymenTableRow({ deliveryman }: DeliverymenTableRowProps) {
       <TableCell className="font-medium">{deliveryman.name}</TableCell>
       <TableCell className="font-medium">{deliveryman.cpf}</TableCell>
       <TableCell>
-        <Button variant="ghost">
+        <Button variant="ghost" size="xs">
           <X className="mr-2 size-3" />
           Cancelar
         </Button>

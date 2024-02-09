@@ -42,7 +42,7 @@ export function UsersDeliverymen() {
             Entregadores
           </h1>
 
-          <Button variant="secondary">
+          <Button variant="link" size="sm">
             <Plus className="size-4 mr-2" />
             Novo entregador
           </Button>
