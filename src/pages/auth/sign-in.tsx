@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
-import * as Cookies from 'js-cookie'
+import Cookies from 'js-cookie'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
@@ -40,12 +40,17 @@ export function SignIn() {
 
   async function handleSignIn(data: SignInForm) {
     try {
-      const response = await authenticate({
+      // eslint-disable-next-line camelcase
+      const { access_token } = await authenticate({
         cpf: data.cpf,
         password: data.password,
       })
 
-      console.log(response)
+      Cookies.set('fastfeet:token', access_token, {
+        expires: 60 * 60 * 1, // 1 hour
+      })
+
+      navigate('/')
     } catch {
       toast.error('Credenciais inválidas!')
     }

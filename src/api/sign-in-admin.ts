@@ -5,8 +5,15 @@ export interface SignInAdminBody {
   password: string
 }
 
+export type SignInAdminResponse = {
+  access_token: string
+}
+
 export async function signInAdmin({ cpf, password }: SignInAdminBody) {
-  const response = await api.post('/sessions', { cpf, password })
+  const response = await api.post<SignInAdminResponse>('/sessions', {
+    cpf,
+    password,
+  })
 
   return response.data
 }
