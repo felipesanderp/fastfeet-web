@@ -52,7 +52,7 @@ export function UsersDeliverymen() {
         <div className="space-y-2.5">
           <DeliverymenTableFilters />
 
-          <div className="rounded-md border">
+          <div className="rounded-md border bg-background">
             <Table>
               <TableHeader>
                 <TableRow>

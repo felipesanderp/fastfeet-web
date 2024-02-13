@@ -13,7 +13,7 @@ export function Header() {
   }
 
   return (
-    <div className="hidden lg:flex items-center justify-between h-16 text-sm px-6 bg-muted border-b">
+    <div className="hidden lg:flex items-center justify-between h-16 text-sm px-6 bg-background border-b">
       <Breadcrumb breadcrumbs={breadcrumbs} />
 
       <CommandMenu />
