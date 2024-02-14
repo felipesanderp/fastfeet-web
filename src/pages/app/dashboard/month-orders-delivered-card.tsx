@@ -1,7 +1,17 @@
+import { useQuery } from '@tanstack/react-query'
+
+import { getMonthOrdersAmount } from '@/api/get-month-orders-count'
 import { Icons } from '@/components/icons'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
+import { MetricCardSkeleton } from './metrics-card-skeleton'
+
 export function MonthOrdersDeliveredCard() {
+  const { data: monthOrdersCount } = useQuery({
+    queryKey: ['metrics', 'month-orders-count'],
+    queryFn: getMonthOrdersAmount,
+  })
+
   return (
     <Card>
       <CardHeader className="flex-row items-center justify-between space-y-0 pb-2">
@@ -12,11 +22,32 @@ export function MonthOrdersDeliveredCard() {
       </CardHeader>
       <CardContent className="space-y-1">
         <>
-          <span className="text-2xl font-bold tracking-tight">22</span>
-          <p className="text-xs text-muted-foreground">
-            <span className="text-rose-500 dark:text-rose-400">-3%</span> em
-            relação a ontem
-          </p>
+          {monthOrdersCount ? (
+            <>
+              <span className="text-2xl font-bold tracking-tight">
+                {monthOrdersCount.currentMonthOrdersCount}
+              </span>
+              <p className="text-xs text-muted-foreground">
+                {monthOrdersCount.diffFromLastMonth >= 0 ? (
+                  <>
+                    <span className="text-emerald-500 dark:text-emerald-400">
+                      +{monthOrdersCount.diffFromLastMonth}%
+                    </span>{' '}
+                    em relação ao mês passado
+                  </>
+                ) : (
+                  <>
+                    <span className="text-rose-500 dark:text-rose-400">
+                      {monthOrdersCount.diffFromLastMonth}%
+                    </span>{' '}
+                    em relação ao mês passado
+                  </>
+                )}
+              </p>
+            </>
+          ) : (
+            <MetricCardSkeleton />
+          )}
         </>
       </CardContent>
     </Card>
