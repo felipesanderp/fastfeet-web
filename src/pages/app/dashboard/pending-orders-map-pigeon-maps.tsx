@@ -19,7 +19,7 @@ interface Order {
 }
 
 export function PendingOrdersMap() {
-  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
+  const [selectedOrders, setSelectedOrders] = useState<Order[] | null>(null)
   const [open, setOpen] = useState(false)
 
   const maptilerProvider = maptiler('esHUeOmxJcVLUhhlheLe', 'streets')
@@ -29,8 +29,17 @@ export function PendingOrdersMap() {
     queryFn: getDayPendingOrdersAmount,
   })
 
-  function handleSelectOrder(order: Order) {
-    setSelectedOrder(order)
+  const groupedOrders: { [key: string]: Order[] } = {}
+  dayPendingOrdersCount?.todayPendingOrders.forEach((order) => {
+    const key = `${order.recipient.address.latitude}-${order.recipient.address.longitude}`
+    if (!groupedOrders[key]) {
+      groupedOrders[key] = []
+    }
+    groupedOrders[key].push(order)
+  })
+
+  function handleSelectOrders(orders: Order[]) {
+    setSelectedOrders(orders)
     setOpen(true)
   }
 
@@ -42,7 +51,22 @@ export function PendingOrdersMap() {
         defaultZoom={11}
         height={500}
       >
-        {dayPendingOrdersCount?.todayPendingOrders.map((order) => (
+        {Object.values(groupedOrders).map((group, index) => {
+          const [latitude, longitude] = [
+            group[0].recipient.address.latitude,
+            group[0].recipient.address.longitude,
+          ]
+
+          return (
+            <Marker
+              key={index}
+              anchor={[Number(latitude), Number(longitude)]}
+              payload={group}
+              onClick={() => handleSelectOrders(group)}
+            />
+          )
+        })}
+        {/* {dayPendingOrdersCount?.todayPendingOrders.map((order) => (
           <Marker
             key={order.id}
             anchor={[
@@ -53,14 +77,16 @@ export function PendingOrdersMap() {
             width={38}
             height={38}
           />
-        ))}
+        ))} */}
         <ZoomControl />
       </Map>
-      {selectedOrder && (
+      {selectedOrders && (
         <DialogContent>
-          <DialogHeader>Informações do pedido</DialogHeader>
+          <DialogHeader>Informações do(s) pedido(s)</DialogHeader>
           <div>
-            <p>Order ID: {selectedOrder.id}</p>
+            {selectedOrders.map((order) => (
+              <p key={order.id}>Order ID: {order.id}</p>
+            ))}
           </div>
         </DialogContent>
       )}
