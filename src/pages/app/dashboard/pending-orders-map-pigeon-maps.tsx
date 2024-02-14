@@ -1,24 +1,33 @@
+import { useQuery } from '@tanstack/react-query'
 import { Map, Marker, ZoomControl } from 'pigeon-maps'
 import { maptiler } from 'pigeon-maps/providers'
 import { useState } from 'react'
 
+import { getDayPendingOrdersAmount } from '@/api/get-day-pending-orders-count'
 import { Dialog, DialogContent, DialogHeader } from '@/components/ui/dialog'
 
 interface Order {
-  id: number
-  latitude: number
-  longitude: number
+  id: string
+  postedAt: Date
+  withdrawnAt: Date
+  recipient: {
+    address: {
+      latitude: string
+      longitude: string
+    }
+  }
 }
 
-interface MapProps {
-  orders: Order[]
-}
-
-export function PendingOrdersMap({ orders }: MapProps) {
+export function PendingOrdersMap() {
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
   const [open, setOpen] = useState(false)
 
   const maptilerProvider = maptiler('esHUeOmxJcVLUhhlheLe', 'streets')
+
+  const { data: dayPendingOrdersCount } = useQuery({
+    queryKey: ['metrics', 'day-pending-orders-count'],
+    queryFn: getDayPendingOrdersAmount,
+  })
 
   function handleSelectOrder(order: Order) {
     setSelectedOrder(order)
@@ -33,10 +42,13 @@ export function PendingOrdersMap({ orders }: MapProps) {
         defaultZoom={11}
         height={500}
       >
-        {orders.map((order) => (
+        {dayPendingOrdersCount?.todayPendingOrders.map((order) => (
           <Marker
             key={order.id}
-            anchor={[order.latitude, order.longitude]}
+            anchor={[
+              Number(order.recipient.address.latitude),
+              Number(order.recipient.address.longitude),
+            ]}
             onClick={() => handleSelectOrder(order)}
             width={38}
             height={38}

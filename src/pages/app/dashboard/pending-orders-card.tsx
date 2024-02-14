@@ -25,7 +25,7 @@ export function PendingOrdersCard() {
           {dayPendingOrdersCount ? (
             <>
               <span className="text-2xl font-bold tracking-tight">
-                {dayPendingOrdersCount.todayPendingOrders}
+                {dayPendingOrdersCount.todayPendingOrdersCount}
               </span>
               <p className="text-xs text-muted-foreground">
                 {dayPendingOrdersCount.diffFromYesterdayPendingOrders >= 0 ? (

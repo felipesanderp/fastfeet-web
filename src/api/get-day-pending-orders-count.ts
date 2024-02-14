@@ -1,7 +1,18 @@
 import { api } from '@/lib/axios'
 
 export interface GetDayPendingOrdersCountResponse {
-  todayPendingOrders: number
+  todayPendingOrders: {
+    id: string
+    postedAt: Date
+    withdrawnAt: Date
+    recipient: {
+      address: {
+        latitude: string
+        longitude: string
+      }
+    }
+  }[]
+  todayPendingOrdersCount: number
   diffFromYesterdayPendingOrders: number
 }
 
