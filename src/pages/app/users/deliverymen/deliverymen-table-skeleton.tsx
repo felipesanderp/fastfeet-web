@@ -5,7 +5,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { TableCell, TableRow } from '@/components/ui/table'
 
 export function DeliverymenTableSkeleton() {
-  return Array.from({ length: 10 }).map((_, i) => {
+  return Array.from({ length: 5 }).map((_, i) => {
     return (
       <TableRow key={i}>
         <TableCell>
@@ -21,7 +21,10 @@ export function DeliverymenTableSkeleton() {
           <Skeleton className="h-4 w-[800px]" />
         </TableCell>
         <TableCell>
-          <Skeleton className="h-4 w-[100px]" />
+          <Skeleton className="h-4 w-[150px]" />
+        </TableCell>
+        <TableCell>
+          <Skeleton className="h-4 w-[109px]" />
         </TableCell>
       </TableRow>
     )

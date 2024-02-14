@@ -10,7 +10,7 @@ export function DeliverymenTableFilters() {
       <Input placeholder="ID do entregador" className="h-8 w-auto" />
       <Input placeholder="Nome do entregador" className="h-8 w-[320px]" />
 
-      <Button variant="secondary" size="xs">
+      <Button variant="default" size="xs">
         <Search className="size-4 mr-2" />
         Filtrar resultados
       </Button>
