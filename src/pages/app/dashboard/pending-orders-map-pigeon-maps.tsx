@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { Map, Marker, ZoomControl } from 'pigeon-maps'
-import { maptiler } from 'pigeon-maps/providers'
+import { maptiler, osm } from 'pigeon-maps/providers'
 import { useState } from 'react'
 
 import { getPendingOrdersAmount } from '@/api/get-pending-orders-count'
@@ -22,7 +22,7 @@ export function PendingOrdersMap() {
   const [selectedOrders, setSelectedOrders] = useState<Order[] | null>(null)
   const [open, setOpen] = useState(false)
 
-  const maptilerProvider = maptiler('esHUeOmxJcVLUhhlheLe', 'streets')
+  // const maptilerProvider = maptiler('esHUeOmxJcVLUhhlheLe', 'streets')
 
   const { data: pendingOrdersCount } = useQuery({
     queryKey: ['metrics', 'pending-orders-count'],
@@ -46,7 +46,7 @@ export function PendingOrdersMap() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <Map
-        provider={maptilerProvider}
+        provider={osm}
         defaultCenter={[-25.4124493, -49.2298433]}
         defaultZoom={11}
         height={500}
