@@ -1,15 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { getDayPendingOrdersAmount } from '@/api/get-day-pending-orders-count'
+import { getPendingOrdersAmount } from '@/api/get-pending-orders-count'
 import { Icons } from '@/components/icons'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 import { MetricCardSkeleton } from './metrics-card-skeleton'
 
 export function PendingOrdersCard() {
-  const { data: dayPendingOrdersCount } = useQuery({
-    queryKey: ['metrics', 'day-pending-orders-count'],
-    queryFn: getDayPendingOrdersAmount,
+  const { data: pendingOrdersCount } = useQuery({
+    queryKey: ['metrics', 'pending-orders-count'],
+    queryFn: getPendingOrdersAmount,
   })
 
   return (
@@ -22,12 +22,12 @@ export function PendingOrdersCard() {
       </CardHeader>
       <CardContent className="space-y-1">
         <>
-          {dayPendingOrdersCount ? (
+          {pendingOrdersCount ? (
             <>
               <span className="text-2xl font-bold tracking-tight">
-                {dayPendingOrdersCount.todayPendingOrdersCount}
+                {pendingOrdersCount.pendingOrders.length}
               </span>
-              <p className="text-xs text-muted-foreground">
+              {/* <p className="text-xs text-muted-foreground">
                 {dayPendingOrdersCount.diffFromYesterdayPendingOrders >= 0 ? (
                   <>
                     <span className="text-emerald-500 dark:text-emerald-400">
@@ -43,7 +43,7 @@ export function PendingOrdersCard() {
                     em relação a ontem
                   </>
                 )}
-              </p>
+              </p> */}
             </>
           ) : (
             <MetricCardSkeleton />

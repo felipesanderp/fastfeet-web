@@ -3,7 +3,7 @@ import { Map, Marker, ZoomControl } from 'pigeon-maps'
 import { maptiler } from 'pigeon-maps/providers'
 import { useState } from 'react'
 
-import { getDayPendingOrdersAmount } from '@/api/get-day-pending-orders-count'
+import { getPendingOrdersAmount } from '@/api/get-pending-orders-count'
 import { Dialog, DialogContent, DialogHeader } from '@/components/ui/dialog'
 
 interface Order {
@@ -24,13 +24,13 @@ export function PendingOrdersMap() {
 
   const maptilerProvider = maptiler('esHUeOmxJcVLUhhlheLe', 'streets')
 
-  const { data: dayPendingOrdersCount } = useQuery({
-    queryKey: ['metrics', 'day-pending-orders-count'],
-    queryFn: getDayPendingOrdersAmount,
+  const { data: pendingOrdersCount } = useQuery({
+    queryKey: ['metrics', 'pending-orders-count'],
+    queryFn: getPendingOrdersAmount,
   })
 
   const groupedOrders: { [key: string]: Order[] } = {}
-  dayPendingOrdersCount?.todayPendingOrders.forEach((order) => {
+  pendingOrdersCount?.pendingOrders.forEach((order) => {
     const key = `${order.recipient.address.latitude}-${order.recipient.address.longitude}`
     if (!groupedOrders[key]) {
       groupedOrders[key] = []
