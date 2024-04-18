@@ -2,7 +2,9 @@ import { setupWorker } from 'msw/browser'
 
 import { env } from '@/env'
 
-export const worker = setupWorker()
+import { getDayDeliveredOrdersCountMock } from './get-day-delivered-orders-count-mock'
+
+export const worker = setupWorker(getDayDeliveredOrdersCountMock)
 
 export async function enableMSW() {
   if (env.MODE !== 'test') {

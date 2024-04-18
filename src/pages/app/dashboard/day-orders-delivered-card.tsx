@@ -1,15 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { getDayOrdersAmount } from '@/api/get-day-orders-count'
+import { getDayDeliveredOrdersAmount } from '@/api/get-day-delivered-orders-count'
 import { Icons } from '@/components/icons'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 import { MetricCardSkeleton } from './metrics-card-skeleton'
 
 export function DayOrdersDeliveredCard() {
-  const { data: dayOrdersCount } = useQuery({
-    queryKey: ['metrics', 'day-orders-count'],
-    queryFn: getDayOrdersAmount,
+  const { data: dayDeliveredOrdersCount } = useQuery({
+    queryKey: ['metrics', 'day--delivered-orders-count'],
+    queryFn: getDayDeliveredOrdersAmount,
   })
 
   return (
@@ -21,23 +21,23 @@ export function DayOrdersDeliveredCard() {
         <Icons.packageOpen className="size-4 text-muted-foreground" />
       </CardHeader>
       <CardContent className="space-y-1">
-        {dayOrdersCount ? (
+        {dayDeliveredOrdersCount ? (
           <>
             <span className="text-2xl font-bold tracking-tight">
-              {dayOrdersCount.todayOrders}
+              {dayDeliveredOrdersCount.todayOrders}
             </span>
             <p className="text-xs text-muted-foreground">
-              {dayOrdersCount.diffFromYesterday >= 0 ? (
+              {dayDeliveredOrdersCount.diffFromYesterday >= 0 ? (
                 <>
                   <span className="text-emerald-500 dark:text-emerald-400">
-                    +{dayOrdersCount.diffFromYesterday}%
+                    +{dayDeliveredOrdersCount.diffFromYesterday}%
                   </span>{' '}
                   em relação a ontem
                 </>
               ) : (
                 <>
                   <span className="text-rose-500 dark:text-rose-400">
-                    {dayOrdersCount.diffFromYesterday}%
+                    {dayDeliveredOrdersCount.diffFromYesterday}%
                   </span>{' '}
                   em relação a ontem
                 </>

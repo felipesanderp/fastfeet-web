@@ -6,15 +6,15 @@ import { Header } from '@/components/header'
 import { Sidebar } from '@/components/sidebar'
 
 export function AppLayout() {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-  const cookie = Cookies.get('fastfeet:token')
+  // const cookie = Cookies.get('fastfeet:token')
 
-  useEffect(() => {
-    if (cookie === undefined) {
-      navigate('/sign-in', { replace: true })
-    }
-  }, [cookie, navigate])
+  // useEffect(() => {
+  //   if (cookie === undefined) {
+  //     navigate('/sign-in', { replace: true })
+  //   }
+  // }, [cookie, navigate])
 
   return (
     <div className="min-h-screen lg:grid lg:grid-cols-app">

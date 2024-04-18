@@ -19,9 +19,9 @@ export function Dashboard() {
 
         <div className="grid grid-cols-4 gap-4">
           <DayOrdersDeliveredCard />
-          <MonthOrdersDeliveredCard />
+          {/* <MonthOrdersDeliveredCard />
           <PendingOrdersCard />
-          <MonthReturnedOrdersCard />
+          <MonthReturnedOrdersCard /> */}
         </div>
 
         <div className="flex flex-col gap-4">
@@ -29,7 +29,7 @@ export function Dashboard() {
           <h2 className="text-lg font-semibold tracking-tight">
             Pedidos pendentes
           </h2>
-          <PendingOrdersMap />
+          {/* <PendingOrdersMap /> */}
         </div>
       </div>
     </>
