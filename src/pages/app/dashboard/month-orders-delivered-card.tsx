@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { getMonthOrdersAmount } from '@/api/get-month-orders-count'
+import { getMonthOrdersAmount } from '@/api/get-month-delivered-orders-count'
 import { Icons } from '@/components/icons'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
@@ -8,7 +8,7 @@ import { MetricCardSkeleton } from './metrics-card-skeleton'
 
 export function MonthOrdersDeliveredCard() {
   const { data: monthOrdersCount } = useQuery({
-    queryKey: ['metrics', 'month-orders-count'],
+    queryKey: ['metrics', 'month-orders-delivered-count'],
     queryFn: getMonthOrdersAmount,
   })
 
