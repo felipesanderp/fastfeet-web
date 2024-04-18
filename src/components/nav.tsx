@@ -9,7 +9,7 @@ export function Nav() {
   const [open, setOpen] = React.useState(false)
 
   return (
-    <nav className="space-y-0.5">
+    <nav className="space-y-2.5">
       <NavLink to="/" title="Início">
         <Icons.home className="size-4" />
       </NavLink>
