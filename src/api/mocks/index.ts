@@ -4,10 +4,14 @@ import { env } from '@/env'
 
 import { getDayDeliveredOrdersCountMock } from './get-day-delivered-orders-count-mock'
 import { getMonthDeliveredOrdersCountMock } from './get-month-delivered-orders-count-mock'
+import { getMonthReturnedOrdersCountMock } from './get-month-returned-orders-mock'
+import { getPendingOrdersCountMock } from './get-pending-orders-count-mock'
 
 export const worker = setupWorker(
   getDayDeliveredOrdersCountMock,
   getMonthDeliveredOrdersCountMock,
+  getMonthReturnedOrdersCountMock,
+  getPendingOrdersCountMock,
 )
 
 export async function enableMSW() {
