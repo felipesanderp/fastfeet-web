@@ -17,10 +17,10 @@ export function AppLayout() {
   // }, [cookie, navigate])
 
   return (
-    <div className="min-h-screen lg:grid lg:grid-cols-app">
+    <div className="flex">
       <Sidebar />
 
-      <main className="px-4 pb-12 pt-24 lg:col-start-2 bg-muted/40 lg:px-8 lg:pt-10">
+      <main className="min-h-screen flex-1 px-4 pb-12 pt-24 lg:col-start-2 bg-muted/40 lg:px-8 lg:pt-10">
         <Outlet />
       </main>
     </div>
