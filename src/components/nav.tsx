@@ -13,7 +13,10 @@ export function Nav() {
       <NavLink to="/" title="Início">
         <Icons.home className="size-4" />
       </NavLink>
-      <Collapsible.Root
+      <NavLink to="/users" title="Usuários">
+        <Icons.user className="size-4" />
+      </NavLink>
+      {/* <Collapsible.Root
         className="w-full space-y-0.5"
         open={open}
         onOpenChange={setOpen}
@@ -39,7 +42,7 @@ export function Nav() {
           <NavLink to="/users/deliverymen" title="Entregadores"></NavLink>
           <NavLink to="/users/recipients" title="Destinatários"></NavLink>
         </Collapsible.Content>
-      </Collapsible.Root>
+      </Collapsible.Root> */}
 
       <NavLink to="/orders" title="Pedidos">
         <Icons.package className="size-4" />

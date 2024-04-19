@@ -5,9 +5,7 @@ import { AuthLayout } from './pages/_layouts/auth'
 import { NotFound } from './pages/404'
 import { Dashboard } from './pages/app/dashboard/dashboard'
 import { Orders } from './pages/app/orders/orders'
-import { UsersAdmin } from './pages/app/users/admin/admin'
-import { UsersDeliverymen } from './pages/app/users/deliverymen/deliverymen'
-import { UsersRecipients } from './pages/app/users/recipients/recipients'
+import { Users } from './pages/app/users/users'
 import { SignIn } from './pages/auth/sign-in'
 import { Error } from './pages/error'
 
@@ -22,16 +20,8 @@ export const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: '/users/admins',
-        element: <UsersAdmin />,
-      },
-      {
-        path: '/users/deliverymen',
-        element: <UsersDeliverymen />,
-      },
-      {
-        path: '/users/recipients',
-        element: <UsersRecipients />,
+        path: '/users',
+        element: <Users />,
       },
       {
         path: '/orders',
