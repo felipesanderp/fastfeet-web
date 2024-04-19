@@ -20,12 +20,9 @@ export function AppLayout() {
     <div className="min-h-screen lg:grid lg:grid-cols-app">
       <Sidebar />
 
-      <div className="lg:col-start-2">
-        <Header />
-        <main className="px-4 pb-12 pt-24  lg:px-8 lg:pt-8">
-          <Outlet />
-        </main>
-      </div>
+      <main className="px-4 pb-12 pt-24 lg:col-start-2  lg:px-8 lg:pt-10">
+        <Outlet />
+      </main>
     </div>
   )
 }
