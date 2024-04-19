@@ -20,9 +20,13 @@ export function AppLayout() {
     <div className="flex">
       <Sidebar />
 
-      <main className="min-h-screen flex-1 px-4 pb-12 pt-24 lg:col-start-2 bg-muted/40 lg:px-8 lg:pt-10">
-        <Outlet />
-      </main>
+      <div className="flex-1">
+        <Header />
+
+        <main className="min-h-screen px-4 pb-12 pt-8 bg-muted/40 lg:px-8 md:pt-10">
+          <Outlet />
+        </main>
+      </div>
     </div>
   )
 }
