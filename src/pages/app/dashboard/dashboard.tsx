@@ -1,5 +1,7 @@
+import { MoveRight } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 
+import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { UserAccountNav } from '@/components/user-account-nav'
 
@@ -31,11 +33,18 @@ export function Dashboard() {
           <MonthReturnedOrdersCard />
         </div>
 
+        <Separator className="mt-4" />
+
         <div className="flex flex-col gap-4">
-          <Separator className="mt-4 mb-4" />
-          <h2 className="text-lg font-semibold tracking-tight">
-            Pedidos pendentes
-          </h2>
+          <div className="flex items-center">
+            <h2 className="text-lg font-semibold tracking-tight">
+              Pedidos pendentes
+            </h2>
+            <Button variant="link" className="ml-auto gap-2">
+              Ver todos
+              <MoveRight className="size-4" />
+            </Button>
+          </div>
           <PendingOrdersMap />
         </div>
       </div>
