@@ -40,7 +40,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 export function Users() {
   return (
     <>
-      <Breadcrumb className="hidden relative -top-20 left-2 md:flex">
+      <Breadcrumb className="hidden relative -top-20 left-2 md:inline-flex">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
