@@ -37,7 +37,21 @@ import {
 } from '@/components/ui/table'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
+import { columns } from './deliveryman/columns'
+import { Deliveryman } from './deliveryman/data/schema'
+import { DeliverymanTable } from './deliveryman/deliveryman-table'
+
 export function Users() {
+  const data: Deliveryman[] = [
+    {
+      id: `user-1`,
+      name: 'Felipe Sander',
+      imageURL: 'http://github.com/felipesanderp.png',
+      role: 'deliveryman',
+      status: 'true',
+    },
+  ]
+
   return (
     <>
       <Breadcrumb className="hidden relative -top-20 left-2 md:inline-flex">
@@ -166,6 +180,9 @@ export function Users() {
                   </Table>
                 </CardContent>
               </Card>
+            </TabsContent>
+            <TabsContent value="deliveryman">
+              <DeliverymanTable data={data} columns={columns} />
             </TabsContent>
           </Tabs>
         </div>
