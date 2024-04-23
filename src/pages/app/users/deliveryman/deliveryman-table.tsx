@@ -23,18 +23,16 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
+import { type Deliveryman } from './data/schema'
 import { DataTablePagination } from './deliveryman-table-pagination'
 import { DataTableToolbar } from './deliveryman-table-toolbar'
 
-interface DeliverymanTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+interface DeliverymanTableProps {
+  columns: ColumnDef<Deliveryman>[]
+  data: Deliveryman[]
 }
 
-export function DeliverymanTable<TData, TValue>({
-  columns,
-  data,
-}: DeliverymanTableProps<TData, TValue>) {
+export function DeliverymanTable({ columns, data }: DeliverymanTableProps) {
   const [rowSelection, setRowSelection] = useState({})
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
