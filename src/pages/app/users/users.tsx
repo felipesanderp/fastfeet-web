@@ -46,9 +46,18 @@ export function Users() {
     {
       id: `user-1`,
       name: 'Felipe Sander',
+      email: 'felipesanderp@gmail.com',
       imageURL: 'http://github.com/felipesanderp.png',
       role: 'deliveryman',
       status: 'true',
+    },
+    {
+      id: `user-2`,
+      name: 'Diego',
+      email: 'diego3g@gmail.com',
+      imageURL: 'http://github.com/diego3g.png',
+      role: 'deliveryman',
+      status: 'false',
     },
   ]
 
@@ -75,33 +84,6 @@ export function Users() {
                 <TabsTrigger value="deliveryman">Entregadores</TabsTrigger>
               </TabsList>
               <div className="ml-auto flex items-center gap-2">
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="outline" size="sm" className="h-8 gap-1">
-                      <ListFilter className="h-3.5 w-3.5" />
-                      <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                        Filter
-                      </span>
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>Filter by</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuCheckboxItem checked>
-                      Active
-                    </DropdownMenuCheckboxItem>
-                    <DropdownMenuCheckboxItem>Draft</DropdownMenuCheckboxItem>
-                    <DropdownMenuCheckboxItem>
-                      Archived
-                    </DropdownMenuCheckboxItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-                <Button size="sm" variant="outline" className="h-8 gap-1">
-                  <File className="h-3.5 w-3.5" />
-                  <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                    Export
-                  </span>
-                </Button>
                 <Button size="sm" className="h-8 gap-1">
                   <PlusCircle className="h-3.5 w-3.5" />
                   <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
@@ -182,7 +164,17 @@ export function Users() {
               </Card>
             </TabsContent>
             <TabsContent value="deliveryman">
-              <DeliverymanTable data={data} columns={columns} />
+              <Card>
+                <CardHeader>
+                  <CardTitle>Usuários</CardTitle>
+                  <CardDescription>
+                    Gerencie os usuários entregadores
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <DeliverymanTable data={data} columns={columns} />
+                </CardContent>
+              </Card>
             </TabsContent>
           </Tabs>
         </div>
