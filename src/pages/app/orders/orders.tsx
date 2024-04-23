@@ -47,7 +47,10 @@ export function Orders() {
             <div className="flex items-center">
               <TabsList>
                 <TabsTrigger value="all">Todos</TabsTrigger>
-                <TabsTrigger value="active">Ativos</TabsTrigger>
+                <TabsTrigger value="pending">Pendentes</TabsTrigger>
+                <TabsTrigger value="withdrawn">Em entrega</TabsTrigger>
+                <TabsTrigger value="delivered">Entregues</TabsTrigger>
+                <TabsTrigger value="returned">Retornada</TabsTrigger>
               </TabsList>
               <div className="ml-auto flex items-center gap-2">
                 <DropdownMenu>
@@ -94,6 +97,7 @@ export function Orders() {
                 <CardContent></CardContent>
               </Card>
             </TabsContent>
+            <TabsContent value="pending"></TabsContent>
           </Tabs>
         </div>
       </div>
