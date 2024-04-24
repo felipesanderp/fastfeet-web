@@ -74,31 +74,27 @@ export function Users() {
           <BreadcrumbPage>Usuários</BreadcrumbPage>
         </BreadcrumbList>
       </Breadcrumb>
-      <div className="flex flex-col gap-4 md:gap-8">
-        <div className="">
-          <div className="flex items-center">
-            <div className="ml-auto flex items-center gap-2">
-              <Button size="sm" className="h-8 gap-1">
-                <PlusCircle className="h-3.5 w-3.5" />
-                <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                  Add Usuário
-                </span>
-              </Button>
-            </div>
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center">
+          <div className="ml-auto flex items-center gap-2">
+            <Button size="sm" className="h-8 gap-1">
+              <PlusCircle className="h-3.5 w-3.5" />
+              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                Add Usuário
+              </span>
+            </Button>
           </div>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Usuários</CardTitle>
-              <CardDescription>
-                Gerencie os usuários entregadores
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <UsersTable data={data} columns={columns} />
-            </CardContent>
-          </Card>
         </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Usuários</CardTitle>
+            <CardDescription>Gerencie os usuários entregadores</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <UsersTable data={data} columns={columns} />
+          </CardContent>
+        </Card>
       </div>
     </>
   )

@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { exportTableToCSV } from '@/lib/export'
 
-import { statuses } from './data/data'
+import { roles, statuses } from './data/data'
 import { type User } from './data/schema'
 import { UsersTableFacetedFilter } from './users-table-faceted-filter'
 import { UsersTableViewOptions } from './users-table-view-options'
@@ -21,7 +21,7 @@ export function UsersTableToolbar({ table }: UsersTableToolbarProps) {
     <div className="flex items-center justify-between gap-2">
       <div className="flex flex-1 items-center space-x-2">
         <Input
-          placeholder="Filtre entregadores..."
+          placeholder="Filtre usuários..."
           value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
           onChange={(event) =>
             table.getColumn('name')?.setFilterValue(event.target.value)
@@ -33,6 +33,13 @@ export function UsersTableToolbar({ table }: UsersTableToolbarProps) {
             column={table.getColumn('status')}
             title="Status"
             options={statuses}
+          />
+        )}
+        {table.getColumn('role') && (
+          <UsersTableFacetedFilter
+            column={table.getColumn('role')}
+            title="Role"
+            options={roles}
           />
         )}
         {isFiltered && (
@@ -53,7 +60,7 @@ export function UsersTableToolbar({ table }: UsersTableToolbarProps) {
         onClick={() =>
           exportTableToCSV(table, {
             filename: 'deliverymen',
-            excludeColumns: ['imageURL', 'actions'],
+            excludeColumns: ['imageURL', 'select', 'actions'],
           })
         }
       >

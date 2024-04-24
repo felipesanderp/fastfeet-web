@@ -62,6 +62,20 @@ export const columns: ColumnDef<User>[] = [
         </span>
       )
     },
+    enableHiding: false,
+  },
+  {
+    accessorKey: 'email',
+    header: ({ column }) => (
+      <UsersTableColumnHeader column={column} title="E-mail" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="max-w-[250px] truncate font-medium">
+          {row.getValue('email')}
+        </span>
+      )
+    },
   },
   {
     accessorKey: 'status',

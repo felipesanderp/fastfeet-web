@@ -18,7 +18,7 @@ export function exportTableToCSV<TData>(
      * @default []
      * @example ["select", "actions"]
      */
-    excludeColumns?: (keyof TData | 'actions')[]
+    excludeColumns?: (keyof TData | 'select' | 'actions')[]
   } = {},
 ): void {
   const { filename = 'table', excludeColumns = [] } = opts
