@@ -78,6 +78,28 @@ export const columns: ColumnDef<User>[] = [
     },
   },
   {
+    accessorKey: 'role',
+    header: ({ column }) => (
+      <UsersTableColumnHeader column={column} title="Role" />
+    ),
+    cell: ({ row }) => {
+      const role = roles.find((role) => role.value === row.getValue('role'))
+
+      if (!role) {
+        return null
+      }
+
+      return (
+        <div className="flex items-center">
+          <Badge variant="outline">{role.label}</Badge>
+        </div>
+      )
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id))
+    },
+  },
+  {
     accessorKey: 'status',
     header: ({ column }) => (
       <UsersTableColumnHeader column={column} title="Status" />
@@ -92,8 +114,14 @@ export const columns: ColumnDef<User>[] = [
       }
 
       return (
-        <div className="flex w-[100px] items-center">
-          <span>{status.label}</span>
+        <div className="w-[100px]">
+          {status.value === 'true' ? (
+            <Badge className="bg-green-500 hover:bg-green-500/90">
+              {status.label}
+            </Badge>
+          ) : (
+            <Badge className="bg-red-500 hover:bg-red-500/90">Inativo</Badge>
+          )}
         </div>
       )
     },
@@ -101,28 +129,7 @@ export const columns: ColumnDef<User>[] = [
       return value.includes(row.getValue(id))
     },
   },
-  {
-    accessorKey: 'role',
-    header: ({ column }) => (
-      <UsersTableColumnHeader column={column} title="Role" />
-    ),
-    cell: ({ row }) => {
-      const role = roles.find((role) => role.value === row.getValue('role'))
 
-      if (!role) {
-        return null
-      }
-
-      return (
-        <div className="flex items-center">
-          <span>{role.label}</span>
-        </div>
-      )
-    },
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id))
-    },
-  },
   {
     id: 'actions',
     cell: ({ row }) => <UsersTableRowActions row={row} />,
