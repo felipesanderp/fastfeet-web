@@ -1,4 +1,4 @@
-import { File, ListFilter, PlusCircle } from 'lucide-react'
+import { File, ListFilter, PlusCircle, Search } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import {
@@ -25,6 +25,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 export function Orders() {
@@ -91,10 +99,29 @@ export function Orders() {
             <TabsContent value="all">
               <Card>
                 <CardHeader>
-                  <CardTitle>Produtos</CardTitle>
-                  <CardDescription>Gerencie todos os produtos</CardDescription>
+                  <CardTitle>Pedidos</CardTitle>
+                  <CardDescription>Gerencie todos os pedidos</CardDescription>
                 </CardHeader>
-                <CardContent></CardContent>
+                <CardContent>
+                  <Table>
+                    <TableHeader>
+                      <TableHead></TableHead>
+                      <TableHead></TableHead>
+                      <TableHead>Identificador</TableHead>
+                      <TableHead>Descrição</TableHead>
+                    </TableHeader>
+                    <TableBody>
+                      <TableRow>
+                        <TableCell>
+                          <Button variant="outline" size="xs">
+                            <Search className="size-3" />
+                            <span className="sr-only">Detalhes do pedido</span>
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </CardContent>
               </Card>
             </TabsContent>
             <TabsContent value="pending"></TabsContent>
