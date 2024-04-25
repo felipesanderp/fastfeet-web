@@ -19,6 +19,7 @@ import {
 } from '@/components/ui/card'
 import { Table, TableBody, TableHead, TableHeader } from '@/components/ui/table'
 
+import { OrdersTableFilters } from './orders-table-filters'
 import { OrdersTableRow } from './orders-table-row'
 
 export function Orders() {
@@ -51,7 +52,9 @@ export function Orders() {
             <CardTitle>Pedidos</CardTitle>
             <CardDescription>Gerencie os pedidos</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="space-y-3">
+            <OrdersTableFilters />
+
             <div className="rounded-md border bg-muted/40">
               <Table>
                 <TableHeader>
