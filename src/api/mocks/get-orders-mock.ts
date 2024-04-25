@@ -43,7 +43,7 @@ export const getOrdersMock = http.get<never, never, GetOrdersResponse>(
 
     if (orderId) {
       filteredOrders = filteredOrders.filter((order) =>
-        order.recipient.includes(orderId),
+        order.orderId.includes(orderId),
       )
     }
 
@@ -56,8 +56,15 @@ export const getOrdersMock = http.get<never, never, GetOrdersResponse>(
       (pageIndex + 1) * perPage,
     )
 
+    console.log(perPage)
+
     return HttpResponse.json({
       orders: paginatedOrders,
+      meta: {
+        pageIndex,
+        perPage,
+        totalCount: filteredOrders.length,
+      },
     })
   },
 )

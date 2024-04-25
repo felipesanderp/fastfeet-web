@@ -59,7 +59,13 @@ export function Orders() {
     })
   }
 
-  console.log(result)
+  function handlePerPageChange(perPageNew: number) {
+    setSearchParams((state) => {
+      state.set('perPage', perPageNew.toString())
+
+      return state
+    })
+  }
 
   return (
     <>
@@ -114,14 +120,16 @@ export function Orders() {
               </Table>
             </div>
             {isLoadingOrders && <span>Carregando...</span>}
-            {/* {result && (
+
+            {result && (
               <Pagination
                 onPageChange={handlePaginate}
-                pageIndex={result}
+                onPerPageChange={handlePerPageChange}
+                pageIndex={result.meta.pageIndex}
                 totalCount={result.meta.totalCount}
                 perPage={result.meta.perPage}
               />
-            )} */}
+            )}
           </CardContent>
         </Card>
       </div>

@@ -15,6 +15,11 @@ export interface GetOrdersResponse {
     recipient: string
     status: 'pending' | 'delivering' | 'delivered'
   }[]
+  meta: {
+    pageIndex: number
+    perPage: number
+    totalCount: number
+  }
 }
 
 export async function getOrders({

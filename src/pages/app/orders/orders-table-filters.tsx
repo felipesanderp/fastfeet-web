@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Search, X } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
+import { useSearchParams } from 'react-router-dom'
 import { z } from 'zod'
 
 import { Button } from '@/components/ui/button'
@@ -15,25 +16,79 @@ import {
 
 const orderFiltersSchema = z.object({
   orderId: z.string().optional(),
-  customerName: z.string().optional(),
+  recipient: z.string().optional(),
   status: z.string().optional(),
 })
 
 type OrderFiltersSchema = z.infer<typeof orderFiltersSchema>
 
 export function OrdersTableFilters() {
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const orderId = searchParams.get('orderId')
+  const recipient = searchParams.get('recipient')
+  const status = searchParams.get('status')
+
   const { register, handleSubmit, control, reset } =
     useForm<OrderFiltersSchema>({
       resolver: zodResolver(orderFiltersSchema),
-      // defaultValues: {
-      //   orderId: orderId ?? '',
-      //   customerName: customerName ?? '',
-      //   status: status ?? 'all',
-      // },
+      defaultValues: {
+        orderId: orderId ?? '',
+        recipient: recipient ?? '',
+        status: status ?? 'all',
+      },
     })
 
+  function handleFilter({ recipient, orderId, status }: OrderFiltersSchema) {
+    setSearchParams((state) => {
+      if (orderId) {
+        state.set('orderId', orderId)
+      } else {
+        state.delete('orderId')
+      }
+
+      if (recipient) {
+        state.set('recipient', recipient)
+      } else {
+        state.delete('recipient')
+      }
+
+      if (status) {
+        state.set('status', status)
+      } else {
+        state.delete('status')
+      }
+
+      state.set('page', '1')
+      state.set('perPage', '10')
+
+      return state
+    })
+  }
+
+  function handleClearFilters() {
+    setSearchParams((state) => {
+      state.delete('orderId')
+      state.delete('recipient')
+      state.delete('status')
+      state.set('page', '1')
+      state.set('perPage', '10')
+
+      return state
+    })
+
+    reset({
+      orderId: '',
+      recipient: '',
+      status: 'all',
+    })
+  }
+
   return (
-    <form className="flex items-center gap-2">
+    <form
+      onSubmit={handleSubmit(handleFilter)}
+      className="flex items-center gap-2"
+    >
       <span>Filtros</span>
       <Input
         placeholder="ID do pedido"
@@ -43,7 +98,7 @@ export function OrdersTableFilters() {
       <Input
         placeholder="Nome do Cliente"
         className="h-8 w-[320px]"
-        {...register('customerName')}
+        {...register('recipient')}
       />
       <Controller
         name="status"
@@ -75,7 +130,7 @@ export function OrdersTableFilters() {
         Filtrar resultados
       </Button>
       <Button
-        // onClick={handleClearFilters}
+        onClick={handleClearFilters}
         variant="outline"
         size="xs"
         type="button"
