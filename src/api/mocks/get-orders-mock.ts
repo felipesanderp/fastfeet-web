@@ -14,7 +14,7 @@ const orders: Orders = Array.from({ length: 60 }).map((_, i) => {
     orderId: `order-${i + 1}`,
     recipient: faker.internet.displayName(),
     description: faker.commerce.productDescription(),
-    status: statuses[i % 5],
+    status: statuses[i % 3],
   }
 })
 

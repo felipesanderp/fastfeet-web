@@ -1,6 +1,10 @@
+import { useQuery } from '@tanstack/react-query'
 import { PlusCircle } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
+import { z } from 'zod'
 
+import { getOrders } from '@/api/get-orders'
+import { Pagination } from '@/components/pagination'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -23,6 +27,40 @@ import { OrdersTableFilters } from './orders-table-filters'
 import { OrdersTableRow } from './orders-table-row'
 
 export function Orders() {
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const orderId = searchParams.get('orderId')
+  const recipient = searchParams.get('recipient')
+  const status = searchParams.get('status')
+
+  const pageIndex = z.coerce
+    .number()
+    .transform((page) => page - 1)
+    .parse(searchParams.get('page') ?? '1')
+  const perPage = z.coerce.number().parse(searchParams.get('perPage') ?? '10')
+
+  const { data: result, isLoading: isLoadingOrders } = useQuery({
+    queryKey: ['orders', pageIndex, perPage, orderId, recipient, status],
+    queryFn: () =>
+      getOrders({
+        pageIndex,
+        perPage,
+        orderId,
+        recipient,
+        status: status === 'all' ? null : status,
+      }),
+  })
+
+  function handlePaginate(pageIndex: number) {
+    setSearchParams((state) => {
+      state.set('page', (pageIndex + 1).toString())
+
+      return state
+    })
+  }
+
+  console.log(result)
+
   return (
     <>
       <Breadcrumb className="hidden relative -top-20 left-2 md:inline-flex">
@@ -66,10 +104,24 @@ export function Orders() {
                   <TableHead className="w-[120px]"></TableHead>
                 </TableHeader>
                 <TableBody>
-                  <OrdersTableRow />
+                  {result &&
+                    result.orders.map((order) => {
+                      return (
+                        <OrdersTableRow key={order.orderId} order={order} />
+                      )
+                    })}
                 </TableBody>
               </Table>
             </div>
+            {isLoadingOrders && <span>Carregando...</span>}
+            {/* {result && (
+              <Pagination
+                onPageChange={handlePaginate}
+                pageIndex={result}
+                totalCount={result.meta.totalCount}
+                perPage={result.meta.perPage}
+              />
+            )} */}
           </CardContent>
         </Card>
       </div>

@@ -10,7 +10,16 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { TableCell, TableRow } from '@/components/ui/table'
 
-export function OrdersTableRow() {
+export interface OrdersTableRowProps {
+  order: {
+    orderId: string
+    description: string
+    recipient: string
+    status: 'pending' | 'delivering' | 'delivered'
+  }
+}
+
+export function OrdersTableRow({ order }: OrdersTableRowProps) {
   return (
     <TableRow>
       <TableCell>
@@ -20,18 +29,33 @@ export function OrdersTableRow() {
         </Button>
       </TableCell>
       <TableCell className="font-mono text-xs font-medium">
-        {crypto.randomUUID()}
+        {order.orderId}
       </TableCell>
       <TableCell className="truncate max-w-[440px]">
-        50 caixas de chocolate ao leite com bastante
-        cacauuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+        {order.description}
       </TableCell>
-      <TableCell>Carlos de Andrade</TableCell>
+      <TableCell>{order.recipient}</TableCell>
       <TableCell>
-        <div className="flex items-center gap-2">
-          <Truck className="size-4" />
-          <p>Em entrega</p>
-        </div>
+        {order.status === 'pending' && (
+          <div className="flex items-center gap-2">
+            <Truck className="size-4" />
+            <p>Pendente</p>
+          </div>
+        )}
+
+        {order.status === 'delivering' && (
+          <div className="flex items-center gap-2">
+            <Truck className="size-4" />
+            <p>Em entrega</p>
+          </div>
+        )}
+
+        {order.status === 'delivered' && (
+          <div className="flex items-center gap-2">
+            <Truck className="size-4" />
+            <p>Entregue</p>
+          </div>
+        )}
       </TableCell>
       <TableCell>
         <DropdownMenu>

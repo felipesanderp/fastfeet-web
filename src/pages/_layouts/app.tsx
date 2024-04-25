@@ -23,7 +23,7 @@ export function AppLayout() {
       <div className="flex-1">
         <Header />
 
-        <main className="min-h-screen px-4 pb-12 pt-8 bg-muted/40 lg:px-8 md:pt-10">
+        <main className="min-h-screen px-4 pb-12 bg-muted/40 lg:px-8">
           <Outlet />
         </main>
       </div>
