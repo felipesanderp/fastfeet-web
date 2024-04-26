@@ -63,19 +63,19 @@ export function Users() {
 
   return (
     <>
-      <Breadcrumb className="hidden relative -top-20 left-2 md:inline-flex">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link to="/">Dashboard</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbPage>Usuários</BreadcrumbPage>
-        </BreadcrumbList>
-      </Breadcrumb>
       <div className="flex flex-col gap-4">
         <div className="flex items-center">
+          <Breadcrumb className="hidden left-2 md:inline-flex">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link to="/">Dashboard</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbPage>Usuários</BreadcrumbPage>
+            </BreadcrumbList>
+          </Breadcrumb>
           <div className="ml-auto flex items-center gap-2">
             <Button size="sm" className="h-8 gap-1">
               <PlusCircle className="h-3.5 w-3.5" />
