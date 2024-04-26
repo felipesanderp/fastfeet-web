@@ -1,5 +1,6 @@
 import { MoveRight } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
+import { useNavigate } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
@@ -11,13 +12,15 @@ import { PendingOrdersCard } from './pending-orders-card'
 import { PendingOrdersMap } from './pending-orders-map-pigeon-maps'
 
 export function Dashboard() {
+  const navigate = useNavigate()
+
   return (
     <>
       <Helmet title="Dashboard" />
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4">
         <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
 
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-4 gap-4 mb-4">
           <DayOrdersDeliveredCard />
           <MonthOrdersDeliveredCard />
           <PendingOrdersCard />
@@ -31,7 +34,11 @@ export function Dashboard() {
             <h2 className="text-lg font-semibold tracking-tight">
               Pedidos pendentes
             </h2>
-            <Button variant="link" className="ml-auto gap-2">
+            <Button
+              variant="link"
+              onClick={() => navigate(`/orders?status=pending`)}
+              className="ml-auto gap-2"
+            >
               Ver todos
               <MoveRight className="size-4" />
             </Button>
