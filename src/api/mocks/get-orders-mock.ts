@@ -11,7 +11,7 @@ const statuses: OrderStatus[] = ['pending', 'delivered', 'delivering']
 
 const orders: Orders = Array.from({ length: 60 }).map((_, i) => {
   return {
-    orderId: `order-${i + 1}`,
+    orderId: crypto.randomUUID(),
     recipient: faker.internet.displayName(),
     description: faker.commerce.productDescription(),
     status: statuses[i % 3],

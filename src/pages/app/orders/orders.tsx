@@ -25,6 +25,7 @@ import { Table, TableBody, TableHead, TableHeader } from '@/components/ui/table'
 
 import { OrdersTableFilters } from './orders-table-filters'
 import { OrdersTableRow } from './orders-table-row'
+import { OrdersTableSkeleton } from './orders-table-skeleton'
 
 export function Orders() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -119,7 +120,7 @@ export function Orders() {
                 </TableBody>
               </Table>
             </div>
-            {isLoadingOrders && <span>Carregando...</span>}
+            {isLoadingOrders && <OrdersTableSkeleton />}
 
             {result && (
               <Pagination
