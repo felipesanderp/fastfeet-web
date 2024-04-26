@@ -1,5 +1,6 @@
 import { MoreHorizontal, Search, Truck } from 'lucide-react'
 
+import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -38,7 +39,7 @@ export function OrdersTableRow({ order }: OrdersTableRowProps) {
       <TableCell>
         {order.status === 'pending' && (
           <div className="flex items-center gap-2">
-            <Truck className="size-4" />
+            <Icons.packageSearch className="size-4" />
             <p>Pendente</p>
           </div>
         )}
@@ -52,7 +53,7 @@ export function OrdersTableRow({ order }: OrdersTableRowProps) {
 
         {order.status === 'delivered' && (
           <div className="flex items-center gap-2">
-            <Truck className="size-4" />
+            <Icons.packageCheck className="size-4" />
             <p>Entregue</p>
           </div>
         )}
