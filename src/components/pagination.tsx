@@ -6,20 +6,20 @@ import {
 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
+// import {
+//   Select,
+//   SelectContent,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from '@/components/ui/select'
 
 export interface PaginationProps {
   pageIndex: number
   totalCount: number
   perPage: number
   onPageChange: (pageIndex: number) => Promise<void> | void
-  onPerPageChange: (perPageNew: number) => Promise<void> | void
+  // onPerPageChange: (perPageNew: number) => Promise<void> | void
 }
 
 export function Pagination({
@@ -27,7 +27,6 @@ export function Pagination({
   perPage,
   totalCount,
   onPageChange,
-  onPerPageChange,
 }: PaginationProps) {
   const pages = Math.ceil(totalCount / perPage) || 1
 
@@ -38,12 +37,12 @@ export function Pagination({
       </span>
 
       <div className="flex items-center gap-6 lg:gap-8">
-        <div className="flex items-center space-x-2">
+        {/* <div className="flex items-center space-x-2">
           <p className="text-sm font-medium">Linhas por página</p>
           <Select
             value={`${perPage}`}
             onValueChange={(value) => {
-              onPerPageChange((perPage = Number(value)))
+              onPerPageChange(Number(value))
             }}
           >
             <SelectTrigger className="h-8 w-[70px]">
@@ -57,7 +56,7 @@ export function Pagination({
               ))}
             </SelectContent>
           </Select>
-        </div>
+        </div> */}
         <div className="text-sm font-medium">
           Página {pageIndex + 1} de {pages}
         </div>

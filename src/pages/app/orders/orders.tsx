@@ -59,13 +59,13 @@ export function Orders() {
     })
   }
 
-  function handlePerPageChange(perPageNew: number) {
-    setSearchParams((state) => {
-      state.set('perPage', perPageNew.toString())
+  // function handlePerPageChange(perPageNew: number) {
+  //   setSearchParams((state) => {
+  //     state.set('perPage', perPageNew.toString())
 
-      return state
-    })
-  }
+  //     return state
+  //   })
+  // }
 
   return (
     <>
@@ -124,7 +124,7 @@ export function Orders() {
             {result && (
               <Pagination
                 onPageChange={handlePaginate}
-                onPerPageChange={handlePerPageChange}
+                // onPerPageChange={handlePerPageChange}
                 pageIndex={result.meta.pageIndex}
                 totalCount={result.meta.totalCount}
                 perPage={result.meta.perPage}
