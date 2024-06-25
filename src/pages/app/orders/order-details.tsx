@@ -35,6 +35,20 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
         <DialogTitle>Pedido: {orderId}</DialogTitle>
         <DialogDescription>Detalhes do pedido</DialogDescription>
       </DialogHeader>
+
+      {order ? (
+        <div>
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableCell className=""></TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+      ) : (
+        ''
+      )}
     </DialogContent>
   )
 }
