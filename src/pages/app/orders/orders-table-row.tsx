@@ -1,7 +1,9 @@
 import { MoreHorizontal, Search, Truck } from 'lucide-react'
+import { useState } from 'react'
 
 import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
+import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,6 +12,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { TableCell, TableRow } from '@/components/ui/table'
+
+import { OrderDetails } from './order-details'
 
 export interface OrdersTableRowProps {
   order: {
@@ -21,13 +25,21 @@ export interface OrdersTableRowProps {
 }
 
 export function OrdersTableRow({ order }: OrdersTableRowProps) {
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false)
+
   return (
     <TableRow>
       <TableCell>
-        <Button variant="outline" size="xs">
-          <Search className="size-3" />
-          <span className="sr-only">Detalhes do pedido</span>
-        </Button>
+        <Dialog open={isDetailsOpen} onOpenChange={setIsDetailsOpen}>
+          <DialogTrigger asChild>
+            <Button variant="outline" size="xs">
+              <Search className="size-3" />
+              <span className="sr-only">Detalhes do pedido</span>
+            </Button>
+          </DialogTrigger>
+
+          <OrderDetails open={isDetailsOpen} orderId={order.orderId} />
+        </Dialog>
       </TableCell>
       <TableCell className="font-mono text-xs font-medium">
         {order.orderId}
