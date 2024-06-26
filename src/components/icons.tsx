@@ -2,6 +2,7 @@ import {
   ChevronDown,
   ChevronRight,
   Home,
+  Loader2,
   LockKeyholeIcon,
   type LucideIcon,
   Package,
@@ -9,6 +10,7 @@ import {
   PackageOpen,
   PackageSearch,
   PackageX,
+  Truck,
   User,
 } from 'lucide-react'
 
@@ -25,4 +27,6 @@ export const Icons = {
   packageCheck: PackageCheck,
   packageX: PackageX,
   packageSearch: PackageSearch,
+  truck: Truck,
+  loader2: Loader2,
 }

@@ -1,3 +1,5 @@
+import { Icons } from '@/components/icons'
+import { Card } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import {
   Table,
@@ -17,33 +19,31 @@ export function OrderDetailsSkeleton() {
           <TableRow>
             <TableCell className="text-muted-foreground">Status</TableCell>
             <TableCell className="flex justify-end">
-              <Skeleton className="h-5 w-20" />
+              <Skeleton className="h-5 w-24" />
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="text-muted-foreground">Cliente</TableCell>
             <TableCell className="flex justify-end">
-              <Skeleton className="h-5 w-[164px]" />
+              <Skeleton className="h-5 w-24" />
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="text-muted-foreground">Telefone</TableCell>
+            <TableCell className="text-muted-foreground">Endereço</TableCell>
             <TableCell className="flex justify-end">
-              <Skeleton className="h-5 w-[140px]" />
+              <Skeleton className="h-5 w-56" />
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="text-muted-foreground">E-mail</TableCell>
+            <TableCell className="text-muted-foreground">Cidade</TableCell>
             <TableCell className="flex justify-end">
-              <Skeleton className="h-5 w-[200px]" />
+              <Skeleton className="h-5 w-24" />
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="text-muted-foreground">
-              Realizado há
-            </TableCell>
+            <TableCell className="text-muted-foreground">CEP</TableCell>
             <TableCell className="flex justify-end">
-              <Skeleton className="h-5 w-[148px]" />
+              <Skeleton className="h-5 w-20" />
             </TableCell>
           </TableRow>
         </TableBody>
@@ -52,40 +52,18 @@ export function OrderDetailsSkeleton() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Produto</TableHead>
-            <TableHead className="text-right">Qtd.</TableHead>
-            <TableHead className="text-right">Preço</TableHead>
-            <TableHead className="text-right">Subtotal</TableHead>
+            <TableHead>Mapa de entrega</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {Array.from({ length: 2 }).map((_, i) => {
-            return (
-              <TableRow key={i}>
-                <TableCell>
-                  <Skeleton className="h-5 w-[140px]" />
-                </TableCell>
-                <TableCell className="text-right">
-                  <Skeleton className="ml-auto h-5 w-3" />
-                </TableCell>
-                <TableCell className="text-right">
-                  <Skeleton className="ml-auto h-5 w-12" />
-                </TableCell>
-                <TableCell className="text-right">
-                  <Skeleton className="ml-auto h-5 w-12" />
-                </TableCell>
-              </TableRow>
-            )
-          })}
-        </TableBody>
-        <TableFooter>
           <TableRow>
-            <TableCell colSpan={3}>Total do pedido</TableCell>
-            <TableCell className="text-right font-medium">
-              <Skeleton className="h-5 w-20" />
+            <TableCell>
+              <Card className="flex h-[200px] w-full items-center justify-center">
+                <Icons.loader2 className="size-8 animate-spin text-muted-foreground" />
+              </Card>
             </TableCell>
           </TableRow>
-        </TableFooter>
+        </TableBody>
       </Table>
     </div>
   )
