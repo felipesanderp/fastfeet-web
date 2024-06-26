@@ -18,7 +18,7 @@ export function Sidebar() {
     // <aside className="hidden inset-y fixed left-0 z-20 md:flex h-full flex-col border-r">
     <aside
       className={cn(
-        `relative hidden min-h-screen border-r duration-500 md:block`,
+        `relative hidden min-h-screen border-r duration-300 bg-background md:block`,
         isOpen ? 'w-[290px]' : 'w-[77px]',
       )}
     >

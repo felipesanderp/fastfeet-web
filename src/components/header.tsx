@@ -2,12 +2,13 @@ import { Search } from 'lucide-react'
 
 import { AdminItems } from './constants/nav-items'
 import { MobileNav } from './mobile-nav'
+import { ThemeToggle } from './theme/theme-toggle'
 import { Input } from './ui/input'
 import { UserAccountNav } from './user-account-nav'
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-30 flex items-center gap-4 h-14 border-b bg-background px-4 md:static md:bg-muted/40 md:border-0 md:px-8">
+    <header className="sticky top-0 z-30 flex items-center gap-4 h-14 border-b bg-background px-4 md:static md:bg-muted/40 dark:bg-muted md:border-0 md:px-8">
       <MobileNav items={AdminItems} />
 
       <div className="relative flex-1 ml-auto md:grow-0">
@@ -24,6 +25,7 @@ export function Header() {
           name: 'Felipe Sander',
         }}
       />
+      <ThemeToggle />
     </header>
   )
 }
