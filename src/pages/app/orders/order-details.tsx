@@ -1,11 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 import { Map, Marker, ZoomControl } from 'pigeon-maps'
 import { osm } from 'pigeon-maps/providers'
+import { useState } from 'react'
 
 import { getOrderDetails } from '@/api/get-order-details'
 import { Icons } from '@/components/icons'
 import { Card, CardContent } from '@/components/ui/card'
 import {
+  Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -15,7 +19,6 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -29,11 +32,17 @@ export interface OrderDetailsProps {
 }
 
 export function OrderDetails({ orderId, open }: OrderDetailsProps) {
+  const [openDeliveredImage, setOpenDeliveredImage] = useState(false)
+
   const { data: order } = useQuery({
     queryKey: ['order', orderId],
     queryFn: () => getOrderDetails({ orderId }),
     enabled: open,
   })
+
+  function handleSelectOrders() {
+    setOpenDeliveredImage(true)
+  }
 
   return (
     <DialogContent>
@@ -114,25 +123,49 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
                 <TableCell>
                   <Card className="">
                     <CardContent className="max-h-[200px]">
-                      <Map
-                        provider={osm}
-                        defaultCenter={[
-                          Number(order.latitude),
-                          Number(order.longitude),
-                        ]}
-                        defaultZoom={14}
-                        height={199}
-                        width={400}
+                      <Dialog
+                        open={openDeliveredImage}
+                        onOpenChange={setOpenDeliveredImage}
                       >
-                        <Marker
-                          anchor={[
+                        <Map
+                          provider={osm}
+                          defaultCenter={[
                             Number(order.latitude),
                             Number(order.longitude),
                           ]}
-                        />
+                          defaultZoom={14}
+                          height={199}
+                          width={400}
+                        >
+                          <Marker
+                            anchor={[
+                              Number(order.latitude),
+                              Number(order.longitude),
+                            ]}
+                            onClick={() => order.image && handleSelectOrders()}
+                          />
 
-                        <ZoomControl />
-                      </Map>
+                          <ZoomControl />
+                        </Map>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle className="flex gap-2">
+                              Entrega realizada:
+                              <p className="text-sm">
+                                {order.deliveredAt &&
+                                  formatDistanceToNow(
+                                    new Date(order.deliveredAt),
+                                    {
+                                      locale: ptBR,
+                                      addSuffix: true,
+                                    },
+                                  )}
+                              </p>
+                            </DialogTitle>
+                          </DialogHeader>
+                          {order.image && <img src={order.image} alt="" />}
+                        </DialogContent>
+                      </Dialog>
                     </CardContent>
                   </Card>
                 </TableCell>

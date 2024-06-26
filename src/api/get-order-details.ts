@@ -7,11 +7,11 @@ export interface GetOrderDetailsParams {
 export interface GetOrdersResponse {
   orderId: string
   description: string
-  image: string
-  postedAt: Date | null
-  withdrawnAt: Date | null
-  deliveredAt: Date | null
-  returnedAt: Date | null
+  image: string | null
+  postedAt: string | null
+  withdrawnAt: string | null
+  deliveredAt: string | null
+  returnedAt: string | null
   customerId: string
   customer: string
   street: string
