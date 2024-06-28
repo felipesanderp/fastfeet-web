@@ -1,7 +1,6 @@
-import { File, ListFilter, MoreHorizontal, PlusCircle } from 'lucide-react'
+import { PlusCircle } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
-import { Badge } from '@/components/ui/badge'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -18,25 +17,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Sheet, SheetTrigger } from '@/components/ui/sheet'
 
+import { AddUserSheet } from './add-user-sheet'
 import { columns } from './users-table/columns'
 import { User } from './users-table/data/schema'
 import { UsersTable } from './users-table/users-table'
@@ -77,12 +60,18 @@ export function Users() {
             </BreadcrumbList>
           </Breadcrumb>
           <div className="ml-auto flex items-center gap-2">
-            <Button size="sm" className="h-8 gap-1">
-              <PlusCircle className="h-3.5 w-3.5" />
-              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                Add Usuário
-              </span>
-            </Button>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button size="sm" className="h-8 gap-1">
+                  <PlusCircle className="h-3.5 w-3.5" />
+                  <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                    Add User
+                  </span>
+                </Button>
+              </SheetTrigger>
+
+              <AddUserSheet />
+            </Sheet>
           </div>
         </div>
 
