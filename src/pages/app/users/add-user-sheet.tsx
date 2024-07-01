@@ -62,7 +62,7 @@ export function AddUserSheet() {
                 <SelectValue placeholder="Selecione a função..." />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="admin">Admin</SelectItem>
+                <SelectItem value="admin">Administrador</SelectItem>
                 <SelectItem value="deliveryman">Entregador</SelectItem>
                 <SelectItem value="recipient">Recipiente</SelectItem>
               </SelectContent>
